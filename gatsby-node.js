@@ -2,37 +2,40 @@ const Promise = require('bluebird')
 const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
+    console.log('testing')
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js')
+    const myProjects = path.resolve('./src/templates/project/index.js')
     resolve(
       graphql(
         `
           {
-            allContentfulBlogPost {
-              edges {
-                node {
-                  title
-                  slug
-                }
+            allContentfulProject {
+              nodes {
+                title
+                contentful_id
+                slug
               }
             }
           }
-          `
+        `
       ).then(result => {
+          console.log(result)
         if (result.errors) {
           console.log(result.errors)
           reject(result.errors)
         }
 
-        const posts = result.data.allContentfulBlogPost.edges
-        posts.forEach((post, index) => {
+        console.log('creating project pages...')
+        const projects = result.data.allContentfulProject.nodes
+        projects.forEach((project, index) => {
+            console.log('creating page for ', project.slug)
           createPage({
-            path: `/blog/${post.node.slug}/`,
-            component: blogPost,
+            path: `/project/${project.slug}/`,
+            component: myProjects,
             context: {
-              slug: post.node.slug
+              slug: project.slug,
             },
           })
         })

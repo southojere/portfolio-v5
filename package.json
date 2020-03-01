@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-contentful-starter",
-  "description": "Starter Contentful Gatsby Blog",
+  "name": "jeremy-southon-portfolio",
+  "description": "Jeremy Southons Portfolio",
   "version": "1.0.0",
-  "author": "Stefan Judis <stefanjudis@gmail.com>",
+  "author": "Jeremy",
   "bugs": {
     "url": "https://github.com/contentful-userland/gatsby-contentful-starter/issues"
   },
@@ -17,7 +17,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
-    "sharp": "^0.22.0"
+    "sharp": "^0.22.0",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
