@@ -1,10 +1,11 @@
 {
-  "name": "Contentful Gatsby Starter",
-  "description": "Gatsby starter for a Contentful project.",
+  "name": "Jeremy Southon's portfolio",
+  "description": "List of my work",
   "keywords": [
-    "contentful",
+    "jeremy southon",
     "gatsby",
-    "static",
+    "react",
+    "developer",
     "ssg"
   ],
   "repository": "https://github.com/contentful-userland/gatsby-contentful-starter",
