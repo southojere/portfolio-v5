@@ -83,7 +83,7 @@ class RootIndex extends React.Component {
                 <Tag
                   key={tag}
                   onClick={() => this.setState({ selectedFilter: tag })}
-                  active={selectedFilter === tag}
+                  active={selectedFilter.toLowerCase() === tag.toLowerCase()}
                 >
                   {tag}
                 </Tag>
