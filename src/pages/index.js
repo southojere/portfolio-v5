@@ -56,7 +56,7 @@ class RootIndex extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedFilter: 'All',
+      selectedFilter: 'featured',
     }
   }
 
@@ -94,7 +94,7 @@ class RootIndex extends React.Component {
                 .filter(project => {
                   if (selectedFilter.toLowerCase() == 'all') return true
                   const projectFilters = project.metaData
-                  if (projectFilters) {
+                  if (projectFilters && projectFilters.filters) {
                     for (const filter of projectFilters.filters) {
                       if (filter.toLowerCase() === selectedFilter.toLowerCase())
                         return true
