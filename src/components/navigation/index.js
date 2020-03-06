@@ -1,6 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { FlexWrapper, MenuContainer, MenuItem, ArrowWrapper,SLink } from './style'
+import {
+  FlexWrapper,
+  MenuContainer,
+  MenuItem,
+  ArrowWrapper,
+  SLink,
+} from './style'
+import { Notification } from '../notification';
 
 const Arrow = () => (
   <ArrowWrapper>
@@ -9,10 +16,12 @@ const Arrow = () => (
   </ArrowWrapper>
 )
 export default ({ location }) => {
+  const [visible, setVisible] = React.useState(false)
   const pathname = location.pathname
   console.log(pathname.includes('project'))
   return (
     <nav role="navigation">
+    <Notification visible={visible} onClick={() => setVisible(!visible)}/>
       <FlexWrapper>
         <h2>
           <Link to={'/'}>Jeremy Southon</Link>
@@ -28,6 +37,9 @@ export default ({ location }) => {
               work
             </MenuItem>
           )}
+           <MenuItem onClick={() => setVisible(!visible)}>
+              contact
+            </MenuItem>
         </MenuContainer>
       </FlexWrapper>
     </nav>
