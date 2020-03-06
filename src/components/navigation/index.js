@@ -1,11 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import  {
-    FlexWrapper,
-    MenuContainer,
-    MenuItem,
-    ArrowWrapper
-} from './style'
+import { FlexWrapper, MenuContainer, MenuItem, ArrowWrapper,SLink } from './style'
 
 const Arrow = () => (
   <ArrowWrapper>
@@ -19,15 +14,20 @@ export default ({ location }) => {
   return (
     <nav role="navigation">
       <FlexWrapper>
-        <h2><Link to={'/'}>Jeremy Southon</Link></h2>
+        <h2>
+          <Link to={'/'}>Jeremy Southon</Link>
+        </h2>
         <MenuContainer>
           <MenuItem>
             {pathname == '/' && <Arrow />}
-            home
+            <SLink to={'/'}>home</SLink>
           </MenuItem>
-          <MenuItem>
-          {pathname.includes('project') && <Arrow />}
-          work</MenuItem>
+          {pathname.includes('project') && (
+            <MenuItem>
+              <Arrow />
+              work
+            </MenuItem>
+          )}
         </MenuContainer>
       </FlexWrapper>
     </nav>

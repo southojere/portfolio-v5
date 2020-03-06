@@ -1,5 +1,5 @@
-
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -12,7 +12,6 @@ const FlexWrapper = styled.div`
     text-decoration: underline;
     line-height: 34px;
   }
-
 `
 
 const MenuContainer = styled.ul`
@@ -29,9 +28,9 @@ const MenuItem = styled.li`
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size:21px;
+  font-size: 21px;
   :hover {
-      text-decoration: underline;
+    text-decoration: underline;
   }
 `
 
@@ -68,9 +67,8 @@ const ArrowWrapper = styled.div`
   }
 `
 
-export {
-    FlexWrapper,
-    MenuContainer,
-    MenuItem,
-    ArrowWrapper,
-}
+const SLink = styled(Link)`
+  text-decoration: none;
+`
+
+export { FlexWrapper, MenuContainer, MenuItem, ArrowWrapper, SLink }
