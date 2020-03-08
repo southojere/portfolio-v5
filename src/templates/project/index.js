@@ -2,17 +2,18 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
+import Fade from 'react-reveal/Fade'
 import Layout from '../../components/layout'
 
 import {
-    ProjectPageWrapper,
-    FlexWrapper,
-    ProjectDescWrapper,
-    ProjectImageWrapper,
-    Headline,
-    Links,
-    Image,
-    Tag,
+  ProjectPageWrapper,
+  FlexWrapper,
+  ProjectDescWrapper,
+  ProjectImageWrapper,
+  Headline,
+  Links,
+  Image,
+  Tag,
 } from './style'
 
 class ProjectTemplate extends React.Component {
@@ -53,9 +54,15 @@ class ProjectTemplate extends React.Component {
                 </Links>
               </ProjectDescWrapper>
               <ProjectImageWrapper>
-                {project.images.map(img => (
-                  <Image key={img.title} alt={img.title} fluid={img.fluid} />
-                ))}
+                <Fade>
+                  {project.images.map(img => (
+                    <Image
+                      key={`project-image-${img.title}`}
+                      alt={img.title}
+                      fluid={img.fluid}
+                    />
+                  ))}
+                </Fade>
               </ProjectImageWrapper>
             </FlexWrapper>
           </ProjectPageWrapper>
@@ -84,6 +91,7 @@ export const pageQuery = graphql`
       }
       techUsed
       images {
+        title
         fluid(maxWidth: 2196, maxHeight: 1270, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_tracedSVG
         }
