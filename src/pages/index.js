@@ -6,13 +6,14 @@ import Hero from '../components/hero'
 import Layout from '../components/layout'
 import Project from '../components/project-preview'
 import styled from 'styled-components'
+import FlipMove from 'react-flip-move'
 const Wrapper = styled.div`
   width: calc(100% - 10vmin);
   margin: 0 auto;
   padding: 5vmin 0;
 `
 
-const ProjectList = styled.div`
+const ProjectList = styled(FlipMove)`
   margin: 0;
   padding: 0;
   list-style: none;
@@ -74,7 +75,7 @@ class RootIndex extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div>
-          <Helmet title={siteTitle} />
+          <Helmet title={siteTitle}></Helmet>
           <Hero data={me} />
           <Wrapper>
             <Headline>My Projects</Headline>
@@ -89,26 +90,28 @@ class RootIndex extends React.Component {
                 </Tag>
               ))}
             </div>
-            <ProjectList>
-              {projects
-                .filter(project => {
-                  if (selectedFilter.toLowerCase() == 'all') return true
-                  const projectFilters = project.metaData
-                  if (projectFilters && projectFilters.filters) {
-                    for (const filter of projectFilters.filters) {
-                      if (filter.toLowerCase() === selectedFilter.toLowerCase())
-                        return true
+            <ProjectList enterAnimation="elevator">
+                {projects
+                  .filter(project => {
+                    if (selectedFilter.toLowerCase() == 'all') return true
+                    const projectFilters = project.metaData
+                    if (projectFilters && projectFilters.filters) {
+                      for (const filter of projectFilters.filters) {
+                        if (
+                          filter.toLowerCase() === selectedFilter.toLowerCase()
+                        )
+                          return true
+                      }
+                      return false
                     }
-                    return false
-                  }
-                })
-                .map(project => {
-                  return (
-                    <li key={project.title}>
-                      <Project project={project} />
-                    </li>
-                  )
-                })}
+                  })
+                  .map(project => {
+                    return (
+                      <li key={project.title}>
+                        <Project project={project} />
+                      </li>
+                    )
+                  })}
             </ProjectList>
           </Wrapper>
         </div>
