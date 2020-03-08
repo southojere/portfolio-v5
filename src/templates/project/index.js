@@ -54,15 +54,14 @@ class ProjectTemplate extends React.Component {
                 </Links>
               </ProjectDescWrapper>
               <ProjectImageWrapper>
-                <Fade>
-                  {project.images.map(img => (
+                {project.images.map(img => (
+                  <Fade key={`project-image-${img.title}`}>
                     <Image
-                      key={`project-image-${img.title}`}
                       alt={img.title}
                       fluid={img.fluid}
                     />
-                  ))}
-                </Fade>
+                  </Fade>
+                ))}
               </ProjectImageWrapper>
             </FlexWrapper>
           </ProjectPageWrapper>
