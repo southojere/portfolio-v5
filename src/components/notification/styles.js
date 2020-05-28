@@ -23,7 +23,7 @@ const NotificationWrapper = styled.div`
 
   -webkit-animation: ease-in-out forwards;
   -webkit-animation-name: comeIn;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
   @keyframes comeIn {
     0% {
       right: -50vw;
@@ -36,4 +36,19 @@ const NotificationWrapper = styled.div`
   }
 `
 
-export { NotificationWrapper }
+const FlexWrapper = styled.div`
+  display: flex;
+  flex-direction: ${props => (props.direction ? props.direction : 'row')};
+  justify-content: ${props => (props.justify ? props.justify : 'flex-start')};
+`
+const SocialMediaWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  > div {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+  }
+`
+
+export { NotificationWrapper, FlexWrapper, SocialMediaWrapper }
