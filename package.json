@@ -22,7 +22,7 @@
     "react-flip-move": "^3.0.4",
     "react-helmet": "^5.2.0",
     "react-reveal": "^1.2.2",
-    "sharp": "^0.22.0",
+    "sharp": "^0.30.5",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
